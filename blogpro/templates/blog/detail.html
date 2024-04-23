@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} {{ post.title }} |{% endblock %}
+{% block content %}
+<section>
+		<div class="container">
+			<div class="post-page">
+				<div class="post-content">
+					<div class="post-card">
+						<p class="sm-txt">Created By | {{ post.author }}</p>
+						<h3 class="post-title">{{ post.title }}</h3>
+						<p class="post-body">{{ post.body | linebreaks}}</p>
+						{% if user.is_staff %}
+						<a class="card-btn edit" href="{% url 'edit' post.pk %}">Edit</a>
+					<a class="card-btn delete" href="{% url 'delete' post.pk %}">Delete</a><br><br>
+						{% else %}
+						{% endif %}
+					</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

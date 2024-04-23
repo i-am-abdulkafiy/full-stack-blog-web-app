@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home |{% endblock %}
+{% block content %}
+<section>
+		<div class="container">
+			<div class="post-page">
+				<div class="post-content">
+					{% for post in posts %}
+					<div class="post-card">
+						<p class="sm-txt">Created By | {{ post.author }}</p>
+						<a href="{% url 'post_detail' post.pk %}"> <h3 class="post-title">{{ post.title }}</h3></a>
+						<p class="post-body">{{ post.body|truncatewords:50 }}</p>
+					<a class="card-btn" href="{% url 'post_detail' post.pk %}">Read More...</a><br><br>
+					<p class="sm-txt">Published | {{ post.created_on| timesince }} Ago!</p>
+					</div>
+					{% endfor %}
+			</div>
+		</div>
+		{% include "pagination.html" with page=posts %}
+	</section>
+{% endblock %}

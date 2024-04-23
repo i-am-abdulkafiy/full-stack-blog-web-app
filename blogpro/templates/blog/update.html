@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Edit Post |{% endblock %}
+{% block content %}
+
+<section>
+	<div class="container">		
+		<form method="post" style="margin-top: 3rem;" enctype="multipart/form-data">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button class="card-btn post" type="submit">
+				Update
+			</button>
+		</form>
+		</div>
+	</section>
+
+{% endblock %}
